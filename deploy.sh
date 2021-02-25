@@ -32,7 +32,7 @@ rm -f $TOMCAT_APP_PATH/webapps/web-demo.war
 
 #复制原有工程
 cp $PROJ_PATH/web-demo/target/web-demo.war $TOMCAT_APP_PATH/webapps/
-#####
+
 cd $TOMCAT_APP_PATH/webapps/
 mv web-demo.war ROOT.war
 
