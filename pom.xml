@@ -16,6 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
     </properties>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,6 +52,35 @@
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <warSourceExcludes>
+                        static/bootstrap/2.3.1/docs/**,
+                        static/ckeditor/_samples/**,
+                        static/ckeditor/_source/**,
+                        static/ckfinder/_samples/**,
+                        static/ckfinder/help/**,
+                        static/compressor*/**,
+                        static/jquery-jbox/2.3/docs/**,
+                        static/jquery-jbox/2.3/Skins2/**,
+                        static/jquery-validation/1.11.0/demo/**,
+                        static/jquery-ztree/3.5.12/demo/**,
+                        static/My97DatePicker/docs/**,
+                        static/supcan/doc/**,
+                        static/SuperSlide/demo/**,
+                        static/treeTable/demo/**<!-- , -->
+                        <!-- userfiles/** --><!-- ,/**/*.jsp -->
+                        ,
+                        test/**
+                    </warSourceExcludes>
+                    <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory><!--
+						<webXml>${project.basedir}/target/jspweb.xml</webXml> -->
+                    <warName>${project.artifactId}</warName>
                 </configuration>
             </plugin>
         </plugins>
