@@ -19,8 +19,8 @@ killTomcat()
         kill -9 $pid
         fi
 }
-cd $PROJ_PATH/web-demo
-mvn clean install
+cd $PROJ_PATH/web-project
+mvn clean install -Dmaven.test.skip=true
 
 #停tomcat
 killTomcat
@@ -28,13 +28,13 @@ killTomcat
 # 删除原有工程
 rm -rf $TOMCAT_APP_PATH/webapps/ROOT
 rm -f $TOMCAT_APP_PATH/webapps/ROOT.war
-rm -f $TOMCAT_APP_PATH/webapps/web-demo.war
+rm -f $TOMCAT_APP_PATH/webapps/web-project.war
 
 #复制原有工程
-cp $PROJ_PATH/web-demo/target/web-demo.war $TOMCAT_APP_PATH/webapps/
+cp $PROJ_PATH/web-project/target/web-project.war $TOMCAT_APP_PATH/webapps/
 
 cd $TOMCAT_APP_PATH/webapps/
-mv web-demo.war ROOT.war
+mv web-project.war ROOT.war
 
 # 启动Tomcat
 cd $TOMCAT_APP_PATH/
