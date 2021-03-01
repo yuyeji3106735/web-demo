@@ -26,6 +26,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.4.1</version>
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -38,50 +45,74 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+        </dependency>
     </dependencies>
 
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.springframework.boot</groupId>-->
+                <!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<excludes>-->
+                        <!--<exclude>-->
+                            <!--<groupId>org.projectlombok</groupId>-->
+                            <!--<artifactId>lombok</artifactId>-->
+                        <!--</exclude>-->
+                    <!--</excludes>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<version>3.3.1</version>-->
+                <!--<configuration>-->
+                    <!--&lt;!&ndash;<warSourceExcludes>&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/bootstrap/2.3.1/docs/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/ckeditor/_samples/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/ckeditor/_source/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/ckfinder/_samples/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/ckfinder/help/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/compressor*/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/jquery-jbox/2.3/docs/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/jquery-jbox/2.3/Skins2/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/jquery-validation/1.11.0/demo/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/jquery-ztree/3.5.12/demo/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/My97DatePicker/docs/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/supcan/doc/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/SuperSlide/demo/**,&ndash;&gt;-->
+                        <!--&lt;!&ndash;static/treeTable/demo/**&lt;!&ndash; , &ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;&lt;!&ndash; userfiles/** &ndash;&gt;&lt;!&ndash; ,/**/*.jsp &ndash;&gt;&ndash;&gt;-->
+                        <!--&lt;!&ndash;,&ndash;&gt;-->
+                        <!--&lt;!&ndash;test/**&ndash;&gt;-->
+                    <!--&lt;!&ndash;</warSourceExcludes>&ndash;&gt;-->
+                    <!--<webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory>&lt;!&ndash;-->
+						<!--<webXml>${project.basedir}/target/jspweb.xml</webXml> &ndash;&gt;-->
+                    <!--<warName>${project.artifactId}</warName>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+
     <build>
+        <finalName>web-project</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
-                <configuration>
-                    <warSourceExcludes>
-                        static/bootstrap/2.3.1/docs/**,
-                        static/ckeditor/_samples/**,
-                        static/ckeditor/_source/**,
-                        static/ckfinder/_samples/**,
-                        static/ckfinder/help/**,
-                        static/compressor*/**,
-                        static/jquery-jbox/2.3/docs/**,
-                        static/jquery-jbox/2.3/Skins2/**,
-                        static/jquery-validation/1.11.0/demo/**,
-                        static/jquery-ztree/3.5.12/demo/**,
-                        static/My97DatePicker/docs/**,
-                        static/supcan/doc/**,
-                        static/SuperSlide/demo/**,
-                        static/treeTable/demo/**<!-- , -->
-                        <!-- userfiles/** --><!-- ,/**/*.jsp -->
-                        ,
-                        test/**
-                    </warSourceExcludes>
-                    <webappDirectory>${project.build.directory}/${project.artifactId}</webappDirectory><!--
-						<webXml>${project.basedir}/target/jspweb.xml</webXml> -->
-                    <warName>${project.artifactId}</warName>
-                </configuration>
             </plugin>
         </plugins>
     </build>
