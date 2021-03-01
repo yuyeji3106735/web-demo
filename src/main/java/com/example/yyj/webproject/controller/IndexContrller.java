@@ -13,6 +13,6 @@ public class IndexContrller {
 
     @RequestMapping("console")
     public String index() {
-        return "hello world!";
+        return "hello world!123";
     }
 }
